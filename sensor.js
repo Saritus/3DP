@@ -7,8 +7,8 @@ var motion = document.querySelector('.motion');
 var maxX = garden.clientWidth - ball.clientWidth;
 var maxY = garden.clientHeight - ball.clientHeight;
 
-var currentTime;
-var lastTimestamp;
+var lastTimestamp, currentTime;
+var speedX, speedY, speedZ;
 
 function round(value, decimals) {
     let power_of_ten = 10 ** decimals;
@@ -67,22 +67,21 @@ function handleMotion(event) {
     interval = event.interval;
     motion.innerHTML += "interval : " + interval + "\n";
 
-    // Speed
+    // Calculate Speed
     currentTime = new Date().getTime();
-    motion.innerHTML += "speed : \n";
     if (lastTimestamp) {
         // m/s² / 1000 * (miliseconds - miliseconds)/1000 /3600 => km/h
         speedX += event.acceleration.x / 1000 * ((currentTime - lastTimestamp) / 1000) / 3600;
-        motion.innerHTML += "\tx : " + speedX + "\n";
-
         speedY += event.acceleration.y / 1000 * ((currentTime - lastTimestamp) / 1000) / 3600;
-        motion.innerHTML += "\tx : " + speedY + "\n";
-
         speedZ += event.acceleration.z / 1000 * ((currentTime - lastTimestamp) / 1000) / 3600;
-        motion.innerHTML += "\tx : " + speedZ + "\n";
     }
 
-    //... same for Y and Z
+    // Speed
+    motion.innerHTML += "speed : \n";
+    motion.innerHTML += "\tx : " + speedX + "\n";
+    motion.innerHTML += "\ty : " + speedY + "\n";
+    motion.innerHTML += "\tz : " + speedZ + "\n";
+
     lastTimestamp = currentTime;
 
 }
