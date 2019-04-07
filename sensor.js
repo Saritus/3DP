@@ -37,6 +37,7 @@ function handleOrientation(event) {
     ball.style.top = (maxX * x / 180) + "px";
     ball.style.left = (maxY * y / 180) + "px";
 
+    config.data.labels.push("");
     config.data.datasets.forEach(function (dataset) {
         dataset.data.push({ x: new Date().getTime(), y: event.gamma });
     });
