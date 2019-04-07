@@ -5,12 +5,17 @@ var output = document.querySelector('.output');
 var maxX = garden.clientWidth - ball.clientWidth;
 var maxY = garden.clientHeight - ball.clientHeight;
 
+function round(value, decimals) {
+    let power_of_ten = 10 ** decimals;
+    return Math.fround(value * power_of_ten) / power_of_ten;
+}
+
 function handleOrientation(event) {
     var x = event.beta;  // In degree in the range [-180,180]
     var y = event.gamma; // In degree in the range [-90,90]
 
-    output.innerHTML = "beta : " + x + "\n";
-    output.innerHTML += "gamma: " + y + "\n";
+    output.innerHTML = "beta : " + round(x, 3) + "\n";
+    output.innerHTML += "gamma: " + round(y, 3) + "\n";
 
     // Because we don't want to have the device upside down
     // We constrain the x value to the range [-90,90]
