@@ -43,6 +43,13 @@ function handleOrientation(event) {
     myChart.update();
 }
 
+document.getElementById('addData').addEventListener('click', function () {
+    handleOrientation({
+        beta: Math.random() * 360 - 180,
+        gamma: Math.random() * 180 - 90
+    });
+});
+
 window.addEventListener('deviceorientation', handleOrientation);
 
 function handleMotion(event) {
