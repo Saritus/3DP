@@ -37,9 +37,16 @@ function handleOrientation(event) {
     ball.style.top = (maxX * x / 180) + "px";
     ball.style.left = (maxY * y / 180) + "px";
 
+    let maxLength = 120;
     config.data.labels.push("");
+    if (config.data.labels.length > maxLength) {
+        config.data.labels = config.data.labels.slice(config.data.labels.length - maxLength, config.data.labels.length);
+    }
     config.data.datasets.forEach(function (dataset) {
         dataset.data.push({ x: new Date().getTime(), y: event.gamma });
+        if (dataset.data.length > maxLength) {
+            dataset.data = dataset.data.slice(dataset.data.length-maxLength, dataset.data.length);
+        }
     });
     myChart.update();
 }
