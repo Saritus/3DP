@@ -34,3 +34,19 @@ function handleOrientation(event) {
 }
 
 window.addEventListener('deviceorientation', handleOrientation);
+
+function handleMotion(event) {
+    acceleration = event.acceleration;
+    output.innerHTML = "acceleration : " + acceleration + "\n";
+
+    accelerationIncludingGravity = event.accelerationIncludingGravity;
+    output.innerHTML = "accelerationIncludingGravity : " + accelerationIncludingGravity + "\n";
+
+    rotationRate = event.rotationRate;
+    output.innerHTML = "rotationRate : " + rotationRate + "\n";
+
+    interval = event.interval;
+    output.innerHTML = "interval : " + interval + "\n";
+}
+
+window.addEventListener("devicemotion", handleMotion, true);
