@@ -42,12 +42,19 @@ function handleOrientation(event) {
     if (config.data.labels.length > maxLength) {
         config.data.labels = config.data.labels.slice(config.data.labels.length - maxLength, config.data.labels.length);
     }
-    config.data.datasets.forEach(function (dataset) {
-        dataset.data.push({ x: new Date().getTime(), y: event.gamma });
-        if (dataset.data.length > maxLength) {
-            dataset.data = dataset.data.slice(dataset.data.length-maxLength, dataset.data.length);
-        }
-    });
+
+    dataset = config.data.datasets[0];
+    dataset.data.push({ x: new Date().getTime(), y: event.beta });
+    if (dataset.data.length > maxLength) {
+        dataset.data = dataset.data.slice(dataset.data.length - maxLength, dataset.data.length);
+    }
+
+    dataset = config.data.datasets[1];
+    dataset.data.push({ x: new Date().getTime(), y: event.gamma });
+    if (dataset.data.length > maxLength) {
+        dataset.data = dataset.data.slice(dataset.data.length - maxLength, dataset.data.length);
+    }
+
     myChart.update();
 }
 
