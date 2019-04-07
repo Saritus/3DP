@@ -16,8 +16,8 @@ function handleOrientation(event) {
     var x = event.beta;  // In degree in the range [-180,180]
     var y = event.gamma; // In degree in the range [-90,90]
 
-    orientation.innerHTML = "beta : " + round(x, 3) + "\n";
-    orientation.innerHTML += "gamma: " + round(y, 3) + "\n";
+    orientation.innerHTML = "beta : " + x + "\n";
+    orientation.innerHTML += "gamma: " + y + "\n";
 
     // Because we don't want to have the device upside down
     // We constrain the x value to the range [-90,90]
