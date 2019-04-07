@@ -39,12 +39,21 @@ window.addEventListener('deviceorientation', handleOrientation);
 function handleMotion(event) {
     acceleration = event.acceleration;
     motion.innerHTML = "acceleration : " + acceleration + "\n";
+    motion.innerHTML += "\tx : " + acceleration.x + "\n";
+    motion.innerHTML += "\ty : " + acceleration.y + "\n";
+    motion.innerHTML += "\tz : " + acceleration.z + "\n";
 
     accelerationIncludingGravity = event.accelerationIncludingGravity;
     motion.innerHTML += "accelerationIncludingGravity : " + accelerationIncludingGravity + "\n";
+    motion.innerHTML += "\tx : " + accelerationIncludingGravity.x + "\n";
+    motion.innerHTML += "\ty : " + accelerationIncludingGravity.y + "\n";
+    motion.innerHTML += "\tz : " + accelerationIncludingGravity.z + "\n";
 
     rotationRate = event.rotationRate;
     motion.innerHTML += "rotationRate : " + rotationRate + "\n";
+    motion.innerHTML += "\talpha : " + rotationRate.alpha + "\n";
+    motion.innerHTML += "\tbeta : " + rotationRate.beta + "\n";
+    motion.innerHTML += "\tgamma : " + rotationRate.gamma + "\n";
 
     interval = event.interval;
     motion.innerHTML += "interval : " + interval + "\n";
