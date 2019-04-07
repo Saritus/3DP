@@ -36,6 +36,11 @@ function handleOrientation(event) {
     // It center the positioning point to the center of the ball
     ball.style.top = (maxX * x / 180) + "px";
     ball.style.left = (maxY * y / 180) + "px";
+
+    config.data.datasets.forEach(function (dataset) {
+        dataset.data.push({ x: new Date().getTime(), y: event.gamma });
+    });
+    myChart.update();
 }
 
 window.addEventListener('deviceorientation', handleOrientation);
