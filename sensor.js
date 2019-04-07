@@ -1,3 +1,4 @@
+// https://developer.mozilla.org/en-US/docs/Web/API/Detecting_device_orientation
 var ball = document.querySelector('.ball');
 var garden = document.querySelector('.garden');
 var orientation = document.querySelector('.orientation');
