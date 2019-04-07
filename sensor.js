@@ -1,6 +1,7 @@
 var ball = document.querySelector('.ball');
 var garden = document.querySelector('.garden');
-var output = document.querySelector('.output');
+var orientation = document.querySelector('.orientation');
+var motion = document.querySelector('.motion');
 
 var maxX = garden.clientWidth - ball.clientWidth;
 var maxY = garden.clientHeight - ball.clientHeight;
@@ -14,8 +15,8 @@ function handleOrientation(event) {
     var x = event.beta;  // In degree in the range [-180,180]
     var y = event.gamma; // In degree in the range [-90,90]
 
-    output.innerHTML = "beta : " + round(x, 3) + "\n";
-    output.innerHTML += "gamma: " + round(y, 3) + "\n";
+    orientation.innerHTML = "beta : " + round(x, 3) + "\n";
+    orientation.innerHTML += "gamma: " + round(y, 3) + "\n";
 
     // Because we don't want to have the device upside down
     // We constrain the x value to the range [-90,90]
@@ -37,16 +38,16 @@ window.addEventListener('deviceorientation', handleOrientation);
 
 function handleMotion(event) {
     acceleration = event.acceleration;
-    output.innerHTML = "acceleration : " + acceleration + "\n";
+    motion.innerHTML = "acceleration : " + acceleration + "\n";
 
     accelerationIncludingGravity = event.accelerationIncludingGravity;
-    output.innerHTML = "accelerationIncludingGravity : " + accelerationIncludingGravity + "\n";
+    motion.innerHTML += "accelerationIncludingGravity : " + accelerationIncludingGravity + "\n";
 
     rotationRate = event.rotationRate;
-    output.innerHTML = "rotationRate : " + rotationRate + "\n";
+    motion.innerHTML += "rotationRate : " + rotationRate + "\n";
 
     interval = event.interval;
-    output.innerHTML = "interval : " + interval + "\n";
+    motion.innerHTML += "interval : " + interval + "\n";
 }
 
 window.addEventListener("devicemotion", handleMotion, true);
