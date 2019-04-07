@@ -7,6 +7,9 @@ var motion = document.querySelector('.motion');
 var maxX = garden.clientWidth - ball.clientWidth;
 var maxY = garden.clientHeight - ball.clientHeight;
 
+var currentTime;
+var lastTimestamp;
+
 function round(value, decimals) {
     let power_of_ten = 10 ** decimals;
     return Math.round(value * power_of_ten) / power_of_ten;
@@ -65,7 +68,7 @@ function handleMotion(event) {
     motion.innerHTML += "interval : " + interval + "\n";
 
     // Speed
-    var currentTime = new Date().getTime();
+    currentTime = new Date().getTime();
     motion.innerHTML += "speed : \n";
     if (lastTimestamp) {
         // m/s² / 1000 * (miliseconds - miliseconds)/1000 /3600 => km/h
