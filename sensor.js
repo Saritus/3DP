@@ -58,6 +58,24 @@ function handleMotion(event) {
 
     interval = event.interval;
     motion.innerHTML += "interval : " + interval + "\n";
+
+    var currentTime = new Date().getTime();
+    motion.innerHTML += "speed : \n";
+    if (lastTimestamp) {
+        // m/s² / 1000 * (miliseconds - miliseconds)/1000 /3600 => km/h
+        speedX += event.acceleration.x / 1000 * ((currentTime - lastTimestamp) / 1000) / 3600;
+        motion.innerHTML += "\tx : " + speedX + "\n";
+
+        speedY += event.acceleration.y / 1000 * ((currentTime - lastTimestamp) / 1000) / 3600;
+        motion.innerHTML += "\tx : " + speedY + "\n";
+
+        speedZ += event.acceleration.z / 1000 * ((currentTime - lastTimestamp) / 1000) / 3600;
+        motion.innerHTML += "\tx : " + speedZ + "\n";
+    }
+
+    //... same for Y and Z
+    lastTimestamp = currentTime;
+
 }
 
 window.addEventListener("devicemotion", handleMotion, true);
