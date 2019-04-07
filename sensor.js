@@ -7,7 +7,7 @@ var maxY = garden.clientHeight - ball.clientHeight;
 
 function round(value, decimals) {
     let power_of_ten = 10 ** decimals;
-    return Math.fround(value * power_of_ten) / power_of_ten;
+    return Math.round(value * power_of_ten) / power_of_ten;
 }
 
 function handleOrientation(event) {
