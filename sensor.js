@@ -7,65 +7,20 @@ var motion = document.querySelector('.motion');
 // var maxX = garden.clientWidth - ball.clientWidth;
 // var maxY = garden.clientHeight - ball.clientHeight;
 
-var lastTimestamp, currentTime;
-var speedX, speedY, speedZ;
-
 function round(value, decimals) {
     let power_of_ten = 10 ** decimals;
     return Math.round(value * power_of_ten) / power_of_ten;
 }
 
 function handleOrientation(event) {
-    var x = event.beta;  // In degree in the range [-180,180]
-    var y = event.gamma; // In degree in the range [-90,90]
+    var x = event.alpha;  // In degree in the range [-180,180]
+    var y = event.beta;  // In degree in the range [-180,180]
+    var z = event.gamma; // In degree in the range [-90,90]
 
-    orientation.innerHTML = "beta : " + x + "\n";
-    orientation.innerHTML += "gamma: " + y + "\n";
-
-    /*
-    // Because we don't want to have the device upside down
-    // We constrain the x value to the range [-90,90]
-    if (x > 90) { x = 90 };
-    if (x < -90) { x = -90 };
-
-    // To make computation easier we shift the range of 
-    // x and y to [0,180]
-    x += 90;
-    y += 90;
-
-    // 10 is half the size of the ball
-    // It center the positioning point to the center of the ball
-    ball.style.top = (maxX * x / 180) + "px";
-    ball.style.left = (maxY * y / 180) + "px";
-
-    let maxLength = 120;
-    config.data.labels.push("");
-    if (config.data.labels.length > maxLength) {
-        config.data.labels = config.data.labels.slice(config.data.labels.length - maxLength, config.data.labels.length);
-    }
-
-    dataset = config.data.datasets[0];
-    dataset.data.push({ x: new Date().getTime(), y: event.beta });
-    if (dataset.data.length > maxLength) {
-        dataset.data = dataset.data.slice(dataset.data.length - maxLength, dataset.data.length);
-    }
-
-    dataset = config.data.datasets[1];
-    dataset.data.push({ x: new Date().getTime(), y: event.gamma });
-    if (dataset.data.length > maxLength) {
-        dataset.data = dataset.data.slice(dataset.data.length - maxLength, dataset.data.length);
-    }
-
-    myChart.update();
-    */
+    orientation.innerHTML = "alpha : " + x + "\n";
+    orientation.innerHTML = "beta : " + y + "\n";
+    orientation.innerHTML += "gamma: " + z + "\n";
 }
-
-document.getElementById('addData').addEventListener('click', function () {
-    handleOrientation({
-        beta: Math.random() * 360 - 180,
-        gamma: Math.random() * 180 - 90
-    });
-});
 
 window.addEventListener('deviceorientation', handleOrientation);
 
@@ -95,23 +50,6 @@ function handleMotion(event) {
     // Interval
     interval = event.interval;
     motion.innerHTML += "interval : " + interval + "\n";
-
-    // Calculate Speed
-    currentTime = new Date().getTime();
-    if (lastTimestamp) {
-        // m/s² / 1000 * (miliseconds - miliseconds)/1000 /3600 => km/h
-        speedX += event.acceleration.x / 1000 * ((currentTime - lastTimestamp) / 1000) / 3600;
-        speedY += event.acceleration.y / 1000 * ((currentTime - lastTimestamp) / 1000) / 3600;
-        speedZ += event.acceleration.z / 1000 * ((currentTime - lastTimestamp) / 1000) / 3600;
-    }
-
-    // Speed
-    motion.innerHTML += "speed : \n";
-    motion.innerHTML += "\tx : " + speedX + "\n";
-    motion.innerHTML += "\ty : " + speedY + "\n";
-    motion.innerHTML += "\tz : " + speedZ + "\n";
-
-    lastTimestamp = currentTime;
 
 }
 
