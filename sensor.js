@@ -1,17 +1,18 @@
 var orientation = document.querySelector('.orientation');
 var motion = document.querySelector('.motion');
 
-function handleOrientation(orientation) {
-
-    orientation.innerHTML = "orientation : " + orientation + "\n";
-    orientation.innerHTML += "alpha : " + orientation.alpha + "\n";
-    orientation.innerHTML += "beta : " + orientation.beta + "\n";
-    orientation.innerHTML += "gamma: " + orientation.gamma + "\n";
+function handleOrientation(event) {
+    console.log(event);
+    orientation.innerHTML = "orientation : " + event + "\n";
+    orientation.innerHTML += "\talpha : " + event.alpha + "\n";
+    orientation.innerHTML += "\tbeta : " + event.beta + "\n";
+    orientation.innerHTML += "\tgamma: " + event.gamma + "\n";
 }
 
 window.addEventListener('deviceorientation', handleOrientation);
 
 function handleMotion(event) {
+    console.log(event);
 
     // Acceleration
     acceleration = event.acceleration;
