@@ -1,16 +1,5 @@
-// https://developer.mozilla.org/en-US/docs/Web/API/Detecting_device_orientation
-// var ball = document.querySelector('.ball');
-// var garden = document.querySelector('.garden');
 var orientation = document.querySelector('.orientation');
 var motion = document.querySelector('.motion');
-
-// var maxX = garden.clientWidth - ball.clientWidth;
-// var maxY = garden.clientHeight - ball.clientHeight;
-
-function round(value, decimals) {
-    let power_of_ten = 10 ** decimals;
-    return Math.round(value * power_of_ten) / power_of_ten;
-}
 
 function handleOrientation(event) {
     var x = event.alpha;  // In degree in the range [-180,180]
