@@ -1,11 +1,11 @@
 // https://developer.mozilla.org/en-US/docs/Web/API/Detecting_device_orientation
-var ball = document.querySelector('.ball');
-var garden = document.querySelector('.garden');
+// var ball = document.querySelector('.ball');
+// var garden = document.querySelector('.garden');
 var orientation = document.querySelector('.orientation');
 var motion = document.querySelector('.motion');
 
-var maxX = garden.clientWidth - ball.clientWidth;
-var maxY = garden.clientHeight - ball.clientHeight;
+// var maxX = garden.clientWidth - ball.clientWidth;
+// var maxY = garden.clientHeight - ball.clientHeight;
 
 var lastTimestamp, currentTime;
 var speedX, speedY, speedZ;
@@ -22,6 +22,7 @@ function handleOrientation(event) {
     orientation.innerHTML = "beta : " + x + "\n";
     orientation.innerHTML += "gamma: " + y + "\n";
 
+    /*
     // Because we don't want to have the device upside down
     // We constrain the x value to the range [-90,90]
     if (x > 90) { x = 90 };
@@ -56,6 +57,7 @@ function handleOrientation(event) {
     }
 
     myChart.update();
+    */
 }
 
 document.getElementById('addData').addEventListener('click', function () {
