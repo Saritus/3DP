@@ -7,7 +7,7 @@ function handleOrientation(event) {
     var z = event.gamma; // In degree in the range [-90,90]
 
     orientation.innerHTML = "alpha : " + x + "\n";
-    orientation.innerHTML = "beta : " + y + "\n";
+    orientation.innerHTML += "beta : " + y + "\n";
     orientation.innerHTML += "gamma: " + z + "\n";
 }
 
