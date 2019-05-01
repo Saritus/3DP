@@ -1,14 +1,12 @@
 var orientation = document.querySelector('.orientation');
 var motion = document.querySelector('.motion');
 
-function handleOrientation(event) {
-    var x = event.alpha;  // In degree in the range [-180,180]
-    var y = event.beta;  // In degree in the range [-180,180]
-    var z = event.gamma; // In degree in the range [-90,90]
+function handleOrientation(orientation) {
 
-    orientation.innerHTML = "alpha : " + x + "\n";
-    orientation.innerHTML += "beta : " + y + "\n";
-    orientation.innerHTML += "gamma: " + z + "\n";
+    orientation.innerHTML = "orientation : " + orientation + "\n";
+    orientation.innerHTML += "alpha : " + orientation.alpha + "\n";
+    orientation.innerHTML += "beta : " + orientation.beta + "\n";
+    orientation.innerHTML += "gamma: " + orientation.gamma + "\n";
 }
 
 window.addEventListener('deviceorientation', handleOrientation);
